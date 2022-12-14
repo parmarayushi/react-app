@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import ExpenseItem from './Components/ExpenseItem';
+
+const expenses = [
+  { id: 1, title: 'New Car', amount: 14.23, date: new Date(2021, 2, 28) },
+  { id: 2, title: 'New Tv', amount: 14.23, date: new Date(2021, 5, 21) },
+  { id: 3, title: 'New Table', amount: 14.23, date: new Date(2021, 3, 8) },
+  { id: 4, title: 'New Wadrobe', amount: 14.23, date: new Date(2021, 6, 30) },
+  { id: 5, title: 'New Refrigerator', amount: 14.23, date: new Date(2021, 1, 2) },
+]
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='overflow-auto h-100 p-3'>
+      {expenses.map((item) => {
+        return (
+          <ExpenseItem
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            amount={item.amount}
+            date={item.date} />
+        )
+      })}
     </div>
   );
 }
